@@ -1,0 +1,57 @@
+#paste your code here:
+
+from turtle import *
+
+bgcolor(0,35,117)
+x = 180
+penup()
+goto(0,-50)
+pendown()
+pensize(2)
+speed(0)
+for n in range(300):
+  pencolor(227,x,14)
+  forward(200)
+  backward(400)
+  forward(200)
+  left(90)
+  forward(1)
+  right(90)
+  x = x-0.5
+penup()
+goto(0,0)
+pendown()
+speed(10)
+pencolor('white')
+penup()
+goto(-180,100)
+pendown()
+for x in range (5):
+  forward(50)
+  backward(25)
+  right(90)
+  circle(25,-90)
+  circle(25,90)
+  right(180)
+  circle(25,90)
+  circle(25,-90)
+  right(90)
+  forward(25)
+  penup()
+  forward(25)
+  pendown()
+penup()
+goto(-100,-50)
+pendown()
+pencolor(245,234,22)
+fillcolor(245,234,22)
+begin_fill()
+right(90)
+circle(100,-180)
+left(90)
+forward(200)
+end_fill()
+penup()
+goto(-200,-150)
+  
+

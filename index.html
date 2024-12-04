@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Turtle Programs</title>
+    <!-- Include Skulpt JavaScript files -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="skulpt.min.js"></script>
+    <script src="skulpt-stdlib.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Lexend Giga', sans-serif;
+        }
+        #studentName {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        #controls {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        #controls button {
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            border: none;
+            padding: 10px 15px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+        #controls button:hover {
+            background-color: #333333;
+        }
+        #mycanvas {
+            border: 1px solid #333333;
+            margin-bottom: 20px;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            margin: 0 10px;
+        }
+        input[type="range"]:focus {
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            background: #444;
+            border-radius: 4px;
+            border: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #888;
+            border-radius: 50%;
+            margin-top: -4px;
+        }
+        input[type="range"]::-moz-range-track {
+            width: 100%;
+            height: 8px;
+            background: #444;
+            border-radius: 4px;
+            border: none;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #888;
+            border-radius: 50%;
+            border: none;
+        }
+        /* For IE */
+        input[type="range"]::-ms-track {
+            width: 100%;
+            height: 8px;
+            background: transparent;
+            border-color: transparent;
+            color: transparent;
+        }
+        input[type="range"]::-ms-fill-lower {
+            background: #444;
+            border-radius: 4px;
+        }
+        input[type="range"]::-ms-fill-upper {
+            background: #444;
+            border-radius: 4px;
+        }
+        input[type="range"]::-ms-thumb {
+            width: 16px;
+            height: 16px;
+            background: #888;
+            border-radius: 50%;
+            border: none;
+            margin-top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="studentName"></div>
+    <!-- Output area for Skulpt -->
+    <pre id="output"></pre>
+    <!-- Canvas for turtle graphics -->
+    <div id="mycanvas"></div>
+    <div id="controls">
+        <button id="prevBtn">←</button>
+        <button id="nextBtn">→</button>
+        <input type="range" id="programSlider" min="0" max="0" value="0" step="1">
+    </div>
+    <!-- Include the refactored JavaScript code -->
+    <script type="text/javascript">
+    var index = 0; // Tracks the current program being shown
+    var programs = []; // Array to store loaded programs
+    var loopTimeout; // Stores the timeout ID for the auto-loop
+    var prepCode = '';
+
+
+    function loadPrepCode() {
+        return fetch('PrepCode.py')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to load PrepCode.py: ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(code => {
+                prepCode = code;
+                console.log('Loaded PrepCode.py');
+            })
+            .catch(err => {
+                console.error('Error loading PrepCode.py:', err);
+            });
+    }
+
+
+    function outf(text) {
+        // Output function for Skulpt
+        var mypre = document.getElementById("output");
+        if (mypre) {
+            mypre.innerHTML += text;
+        }
+        console.log('Output:', text); // Log the program's output to the console
+    }
+
+
+    function builtinRead(x) {
+        if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+            throw "File not found: '" + x + "'";
+        return Sk.builtinFiles["files"][x];
+    }
+
+
+    function runProgram(program) {
+        console.log('Running program:', program.name); // Debug: program being executed
+        // Clear output
+        var mypre = document.getElementById("output");
+        if (mypre) {
+            mypre.innerHTML = '';
+        }
+        Sk.pre = "output";
+        Sk.configure({
+            output: outf, // Your output function
+            read: builtinRead, // Your read function
+            __future__: Sk.python3 // Use Python 3 if needed
+        });
+        // Set the target for turtle graphics
+        (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+        // Modify the code: remove "from turtle import *" and prepend prepCode
+        var modifiedCode = program.code.replace(/^from\s+turtle\s+import\s+\*.*$/mg, '');
+        modifiedCode = prepCode + '\n' + modifiedCode;
+        var myPromise = Sk.misceval.asyncToPromise(function() {
+            return Sk.importMainWithBody("<stdin>", false, modifiedCode, true);
+        });
+        myPromise.then(function(mod) {
+            console.log('Successfully ran program:', program.name); // Debug success
+        }, function(err) {
+            console.error('Error in program:', program.name, 'Error:', err.toString()); // Debug error
+        });
+    }
+
+
+    function clearCanvas() {
+        console.log('Clearing canvas'); // Debug: canvas cleared
+        var canvasContainer = document.getElementById('mycanvas');
+        while (canvasContainer.firstChild) {
+            canvasContainer.removeChild(canvasContainer.firstChild);
+        }
+    }
+
+
+    function showProgram() {
+        if (programs.length === 0) {
+            console.error('No programs to display.'); // Debug: no programs
+            return;
+        }
+        console.log('Showing program index:', index); // Debug: current program index
+        clearCanvas();
+        var program = programs[index];
+        document.getElementById('studentName').innerText = '' + program.name; // Show program author
+        runProgram(program);
+        // Update slider value
+        document.getElementById('programSlider').value = index;
+    }
+
+
+    function nextProgram() {
+        index = (index + 1) % programs.length;
+        console.log('Next program index:', index); // Debug: next program index
+        showProgram();
+    }
+
+
+    function prevProgram() {
+        index = (index - 1 + programs.length) % programs.length;
+        console.log('Previous program index:', index); // Debug: previous program index
+        showProgram();
+    }
+
+
+    function autoLoopPrograms() {
+        console.log('Starting auto-loop'); // Debug: auto-loop started
+        showProgram();
+        loopTimeout = setTimeout(function() {
+            nextProgram();
+            autoLoopPrograms();
+        }, 5000); // Change every 5 seconds
+    }
+
+
+    function loadPrograms() {
+        console.log('Loading programs...'); // Debug: loading programs
+        fetch('students.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                console.log('Fetched students.json'); // Debug: file fetched
+                return response.json();
+            })
+            .then(data => {
+                let promises = data.map(student => {
+                    console.log('Fetching code for:', student.name); // Debug: fetching student code
+                    return fetch(student.codeFile)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok ' + response.statusText);
+                            }
+                            return response.text();
+                        })
+                        .then(code => {
+                            console.log('Loaded code for:', student.name); // Debug: code loaded
+                            programs.push({
+                                name: student.name,
+                                code: code
+                            });
+                        });
+                });
+                return Promise.all(promises);
+            })
+            .then(() => {
+                console.log('All programs loaded:', programs); // Debug: all programs loaded
+                if (programs.length > 0) {
+                    programs.sort((a, b) => a.name.localeCompare(b.name));
+                    console.log('All programs sorted:', programs);
+                    // Set slider max value
+                    document.getElementById('programSlider').max = programs.length - 1;
+                    autoLoopPrograms(); // Start auto-loop if programs are loaded
+                } else {
+                    console.error('No programs loaded.'); // Debug: no programs
+                }
+            })
+            .catch(err => {
+                console.error('Error loading programs:', err); // Debug: error loading programs
+            });
+    }
+
+
+    window.onload = function() {
+        console.log('Initializing application...'); // Debug: application initializing
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            console.log('Next button clicked'); // Debug: next button clicked
+            clearTimeout(loopTimeout);
+            nextProgram();
+        });
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            console.log('Previous button clicked'); // Debug: previous button clicked
+            clearTimeout(loopTimeout);
+            prevProgram();
+        });
+        // Slider event listener
+        document.getElementById('programSlider').addEventListener('input', function() {
+            console.log('Slider moved to:', this.value); // Debug: slider value
+            clearTimeout(loopTimeout);
+            index = parseInt(this.value);
+            showProgram();
+        });
+        // Load PrepCode.py first, then load programs
+        loadPrepCode().then(() => {
+            loadPrograms(); // Load student programs after PrepCode.py is loaded
+        });
+    };
+    </script>
+</body>
+</html>

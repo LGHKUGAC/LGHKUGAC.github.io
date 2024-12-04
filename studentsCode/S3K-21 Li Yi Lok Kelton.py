@@ -1,0 +1,101 @@
+#paste your code here:
+
+from turtle import *
+x = 50
+speed(0)
+bgcolor("black")
+def circless(x):
+  pencolour("#2D6D4B")
+  pendown()
+  circle(x)
+  penup()
+def circles(x):
+  penup()
+  goto(0,0)
+  circless(x)
+  goto(0,-2*x)
+  circless(x)
+  goto(-x,-x)
+  circless(x)
+  goto(x,-x)
+  circless(x)
+  goto(x,0)
+  circless(x)
+  goto(-x,0)
+  circless(x)
+  goto(-x,-2*x)
+  circless(x)
+  goto(x,-2*x)
+  circless(x)
+def tri(x):
+  pencolour("#24936E")
+  pendown()
+  for i in range(3):
+    left(60)
+    forward(2*x)
+    left(60)
+  penup()
+def triangles(x):
+  penup()
+  goto(0,0)
+  setheading(0)
+  tri(x)
+  setheading(180)
+  tri(x)
+  setheading(90)
+  tri(x)
+  setheading(270)
+  tri(x)
+  setheading(0)
+for i in range(5):
+  circles(x)
+  triangles(x)
+  x = x-1
+penup()
+goto(0,-120)
+pendown()
+pencolour("#4F726C")
+circle(120)
+y = 50
+penup()
+def square(y):
+  pencolour("#096148")
+  pendown()
+  for i in range(4):
+    forward(y)
+    left(90)
+  penup()
+for i in range(5):
+  goto(-y,-y)
+  square(y)
+  goto(0,0)
+  square(y)
+  goto(0,-y)
+  square(y)
+  goto(-y,0)
+  square(y) 
+  y = y+1
+penup()
+goto(86,48)
+pendown()
+setheading(15)
+def fillthingy():
+  pendown()
+  fillcolour("#268785")
+  begin_fill()
+  for i in range(3):
+    left(60)
+    forward(26.5)
+  end_fill()
+  penup()
+fillthingy()
+setheading(105)
+goto(-48,86)
+fillthingy()
+setheading(195)
+goto(-86,-48)
+fillthingy()
+setheading(285)
+goto(48,-86)
+fillthingy()
+

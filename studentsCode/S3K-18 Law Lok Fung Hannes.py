@@ -1,0 +1,78 @@
+#paste your code here:
+from turtle import *
+speed(0)
+def ditri(l):
+  a = l/2**.5
+  forward(l)
+  right(135)
+  forward(2*a)
+  left(135)
+  forward(l)
+  left(135)
+  forward(2*a)
+  right(135)
+  
+def csot(way):
+  pencolor("midnightblue")
+  pensize(7)
+  goto(0,0)
+  way((((150/2**.5)**2-(150/2)**2)**.5)/2)
+  right(90)
+  forward(20)
+  left(90)
+  pendown()
+  begin_fill()
+  circle(20)
+  end_fill()
+  penup()
+  
+g = 1
+f = 1
+for i in range(250):
+  xq = random.randint(0, 255)
+  yq = random.randint(0, 255)
+  zq = random.randint(0, 255)
+  pencolor(xq, yq, zq)
+  penup()
+  goto(0,0)
+  right(90)
+  forward(g)
+  left(90)
+  pendown() 
+  circle(f)
+  g = g+1
+  f = f+1
+penup()
+goto(0,0)
+speed(8)
+pensize(5)
+pendown()
+pencolor("midnightblue")
+penup()
+left(90)
+forward(50)
+left(90)
+forward(50)
+left(180)
+fillcolor("royalblue")
+begin_fill()
+pendown()
+ditri(100)
+end_fill()
+penup()
+goto(0,0)
+left(45)
+forward(150/2**.5)
+right(135)
+pendown()
+fillcolor("aquamarine")
+begin_fill()
+ditri(150)
+end_fill()
+penup()
+left(90)
+fillcolor("azure")
+
+csot(forward)
+csot(backward)
+

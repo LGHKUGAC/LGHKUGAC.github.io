@@ -1,0 +1,51 @@
+#paste your code here:
+from turtle import *
+pensize(2)
+pencolor('#E5B80B')
+fillcolor('#E5B80B')
+speed(10)
+
+bgcolor('#333333')
+
+begin_fill()
+left(30)
+forward(20)
+backward(20)
+right(240)
+forward(20)
+backward(20)
+left(120)
+forward(20)
+left(120)
+forward(20)
+left(60)
+forward(20)
+end_fill()
+left(30)
+forward(30)
+
+for i in range(6): 
+  for s in range(4):
+    forward(10)
+    right(90)
+  right(360/6)
+goto(-17,11)
+fillcolor('white')
+begin_fill()
+left(150)
+forward(20)
+left(55)
+forward(20)
+end_fill()
+left(125)
+penup()
+forward(20)
+left(50)
+forward(20)
+right(115)
+pendown()
+forward(17)
+right(50)
+forward(18)
+
+
