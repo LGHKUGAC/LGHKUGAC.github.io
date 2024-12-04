@@ -60,5 +60,4 @@ def draw_star(size):
 
 
 hideturtle()
-done()
 

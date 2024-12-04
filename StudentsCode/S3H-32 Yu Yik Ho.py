@@ -30,5 +30,3 @@ for i in range(number):
     size = random.randint(2, 5)
     colors_rand = random.choice(colors)
     draw_circle(x, y, size, colors_rand)
-
-done()

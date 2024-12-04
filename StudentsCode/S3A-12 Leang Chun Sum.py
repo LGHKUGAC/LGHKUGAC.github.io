@@ -57,5 +57,4 @@ def draw_complex_logo():
 
 draw_complex_logo()
 hideturtle()
-done()
 

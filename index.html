@@ -16,10 +16,28 @@
             color: #e0e0e0;
             font-family: 'Lexend Giga', sans-serif;
         }
-        #studentName {
-            font-size: 20px;
-            margin-bottom: 10px;
+               /* Add grid container styles */
+        #canvasContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-gap: 20px;
+            margin-bottom: 20px;
         }
+        .canvas-item {
+            border: 1px solid #333333;
+            position: relative;
+        }
+        .student-name {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 14px;
+            z-index: 1;
+        }
+
         #controls {
             margin-bottom: 20px;
             display: flex;
@@ -40,7 +58,6 @@
         }
         #mycanvas {
             border: 1px solid #333333;
-            margin-bottom: 20px;
         }
         input[type="range"] {
             -webkit-appearance: none;
@@ -106,22 +123,27 @@
     </style>
 </head>
 <body>
-    <div id="studentName"></div>
     <!-- Output area for Skulpt -->
     <pre id="output"></pre>
     <!-- Canvas for turtle graphics -->
-    <div id="mycanvas"></div>
+    <!-- Add a container for multiple canvases -->
+    <div id="canvasContainer"></div>
+
+
+    <!-- Controls remain the same -->
     <div id="controls">
         <button id="prevBtn">←</button>
         <button id="nextBtn">→</button>
-        <input type="range" id="programSlider" min="0" max="0" value="0" step="1">
+    <input type="range" id="programSlider" min="0" max="0" value="0" step="1">
     </div>
+
     <!-- Include the refactored JavaScript code -->
     <script type="text/javascript">
-    var index = 0; // Tracks the current program being shown
-    var programs = []; // Array to store loaded programs
-    var loopTimeout; // Stores the timeout ID for the auto-loop
-    var prepCode = '';
+        var index = 0; // Tracks the current set of programs being shown
+        var programs = []; // Array to store loaded programs
+        var programsPerPage = 8; // Number of programs to display at once
+        var prepCode = '';
+    
 
 
     function loadPrepCode() {
@@ -159,57 +181,111 @@
     }
 
 
-    function runProgram(program) {
-        console.log('Running program:', program.name); // Debug: program being executed
-        // Clear output
-        var mypre = document.getElementById("output");
-        if (mypre) {
-            mypre.innerHTML = '';
-        }
+    function runProgram(program, canvasId) {
+        // Configure Skulpt
         Sk.pre = "output";
         Sk.configure({
-            output: outf, // Your output function
-            read: builtinRead, // Your read function
-            __future__: Sk.python3 // Use Python 3 if needed
+            output: outf,
+            read: builtinRead,
+            __future__: Sk.python3
         });
         // Set the target for turtle graphics
-        (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
-        // Modify the code: remove "from turtle import *" and prepend prepCode
+        (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = canvasId;
+
+
+        // Modify the code
         var modifiedCode = program.code.replace(/^from\s+turtle\s+import\s+\*.*$/mg, '');
         modifiedCode = prepCode + '\n' + modifiedCode;
-        var myPromise = Sk.misceval.asyncToPromise(function() {
+
+
+        Sk.misceval.asyncToPromise(function() {
             return Sk.importMainWithBody("<stdin>", false, modifiedCode, true);
-        });
-        myPromise.then(function(mod) {
-            console.log('Successfully ran program:', program.name); // Debug success
+        }).then(function() {
+            console.log('Successfully ran program:', program.name);
         }, function(err) {
-            console.error('Error in program:', program.name, 'Error:', err.toString()); // Debug error
+            console.error('Error in program:', program.name, 'Error:', err.toString());
         });
     }
 
 
-    function clearCanvas() {
-        console.log('Clearing canvas'); // Debug: canvas cleared
-        var canvasContainer = document.getElementById('mycanvas');
+    function clearCanvasContainer() {
+        var canvasContainer = document.getElementById('canvasContainer');
         while (canvasContainer.firstChild) {
             canvasContainer.removeChild(canvasContainer.firstChild);
         }
     }
 
 
-    function showProgram() {
+
+    function showPrograms() {
         if (programs.length === 0) {
-            console.error('No programs to display.'); // Debug: no programs
+            console.error('No programs to display.');
             return;
         }
-        console.log('Showing program index:', index); // Debug: current program index
-        clearCanvas();
-        var program = programs[index];
-        document.getElementById('studentName').innerText = '' + program.name; // Show program author
-        runProgram(program);
-        // Update slider value
+
+
+        clearCanvasContainer();
+
+
+        var canvasContainer = document.getElementById('canvasContainer');
+        var startIndex = index * programsPerPage;
+        var endIndex = Math.min(startIndex + programsPerPage, programs.length);
+
+
+        for (var i = startIndex; i < endIndex; i++) {
+            var program = programs[i];
+
+
+            // Create canvas item
+            var canvasItem = document.createElement('div');
+            canvasItem.className = 'canvas-item';
+
+
+            // Create canvas ID
+            var canvasId = 'mycanvas_' + i;
+
+
+            // Create canvas div
+            var canvasDiv = document.createElement('div');
+            canvasDiv.id = canvasId;
+            canvasItem.appendChild(canvasDiv);
+
+
+            // Add student name
+            var nameDiv = document.createElement('div');
+            nameDiv.className = 'student-name';
+            nameDiv.innerText = program.name;
+            canvasItem.appendChild(nameDiv);
+
+
+            canvasContainer.appendChild(canvasItem);
+
+
+            // Run program in this canvas
+            runProgram(program, canvasId);
+        }
+
+
+        // Update slider max value
+        var maxIndex = Math.ceil(programs.length / programsPerPage) - 1;
+        document.getElementById('programSlider').max = maxIndex;
         document.getElementById('programSlider').value = index;
     }
+
+
+    function nextProgramSet() {
+        var maxIndex = Math.ceil(programs.length / programsPerPage) - 1;
+        index = (index + 1) % (maxIndex + 1);
+        showPrograms();
+    }
+
+
+    function prevProgramSet() {
+        var maxIndex = Math.ceil(programs.length / programsPerPage) - 1;
+        index = (index - 1 + (maxIndex + 1)) % (maxIndex + 1);
+        showPrograms();
+    }
+
 
 
     function nextProgram() {
@@ -228,11 +304,11 @@
 
     function autoLoopPrograms() {
         console.log('Starting auto-loop'); // Debug: auto-loop started
-        showProgram();
+        showPrograms();
         loopTimeout = setTimeout(function() {
-            nextProgram();
+            nextProgramSet();
             autoLoopPrograms();
-        }, 5000); // Change every 5 seconds
+        }, 7000); // Change every 7 seconds
     }
 
 
@@ -267,13 +343,11 @@
                 return Promise.all(promises);
             })
             .then(() => {
-                console.log('All programs loaded:', programs); // Debug: all programs loaded
+                console.log('All programs loaded:', programs);
                 if (programs.length > 0) {
                     programs.sort((a, b) => a.name.localeCompare(b.name));
                     console.log('All programs sorted:', programs);
-                    // Set slider max value
-                    document.getElementById('programSlider').max = programs.length - 1;
-                    autoLoopPrograms(); // Start auto-loop if programs are loaded
+                    showPrograms(); // Display the first set of programs
                 } else {
                     console.error('No programs loaded.'); // Debug: no programs
                 }
@@ -283,30 +357,45 @@
             });
     }
 
+    function calculateProgramsPerPage() {
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    var columns = Math.floor(width / 400); // 200px min canvas width + 20px gap
+    var rows = Math.floor(height / 400);;
+    programsPerPage = columns * rows;
+    console.log(columns);
+    console.log(rows);
+    console.log(programsPerPage);
+    }
+
+
+    window.onresize = function() {
+    calculateProgramsPerPage();
+    showPrograms();
+    };
 
     window.onload = function() {
         console.log('Initializing application...'); // Debug: application initializing
+        calculateProgramsPerPage();
         document.getElementById('nextBtn').addEventListener('click', function() {
             console.log('Next button clicked'); // Debug: next button clicked
-            clearTimeout(loopTimeout);
-            nextProgram();
+            nextProgramSet();
         });
         document.getElementById('prevBtn').addEventListener('click', function() {
             console.log('Previous button clicked'); // Debug: previous button clicked
-            clearTimeout(loopTimeout);
-            prevProgram();
+            prevProgramSet();
         });
         // Slider event listener
         document.getElementById('programSlider').addEventListener('input', function() {
-            console.log('Slider moved to:', this.value); // Debug: slider value
-            clearTimeout(loopTimeout);
+            console.log('Slider moved to:', this.value);
             index = parseInt(this.value);
-            showProgram();
+            showPrograms();
         });
         // Load PrepCode.py first, then load programs
         loadPrepCode().then(() => {
-            loadPrograms(); // Load student programs after PrepCode.py is loaded
+            loadPrograms();
         });
+
     };
     </script>
 </body>

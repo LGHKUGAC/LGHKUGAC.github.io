@@ -81,5 +81,3 @@ draw_lightning(110,50, 'yellow',0.15)
 
 # Hide the turtle 
 hideturtle()
-
-done()

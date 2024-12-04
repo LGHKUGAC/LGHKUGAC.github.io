@@ -12,7 +12,7 @@ fillcolor('skyblue')
 begin_fill()
 pensize(5)
 pencolour('skyblue')
-petals = random.randint(5,9)
+petals = 5
 angle = 360 / petals
 
 for i in range (petals):
@@ -42,7 +42,7 @@ fillcolor('blue')
 begin_fill()
 pensize(5)
 pencolor('royalblue')
-petals = random.randomint(3,7)
+petals = random.randint(3,7)
 angle = 360 / petals
 
 for i in range(petals):

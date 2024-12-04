@@ -1,7 +1,6 @@
 #paste your code here:
 
 from turtle import *
-from turtle import *
 speed(4)
 bgcolor('darkblue')
 fillcolor('grey')

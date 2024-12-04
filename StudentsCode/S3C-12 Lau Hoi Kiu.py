@@ -7,7 +7,7 @@ def backwards(text):
 
 #let users to know that I will be drawing the dangerus sign and lead them to press enter
 #use backward to make things more sus and attract people to press in
-print(backwards('*retne* GOOOO see the DANGEROUS SIGN '))
+#print(backwards('*retne* GOOOO see the DANGEROUS SIGN '))
 speed(0)
 bgcolor("gold")
 

@@ -1,6 +1,5 @@
 #paste your code here:
 from turtle import *
-import math
 bgcolor('black')
 a = 40
 b = 100
