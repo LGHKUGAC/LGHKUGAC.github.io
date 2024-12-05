@@ -1,0 +1,42 @@
+#paste your code here:
+from turtle import *
+speed(10)
+bgcolor('black')
+pencolor('lightblue')
+#the angle to turn is 360 divided by the number of shapes
+degrees = 30 
+#length: 30*12
+forward(30*12)
+backward(30*12)
+left(30)
+penup()
+forward(30*12)
+left(90)
+pendown()
+forward(30*12)
+left(90)
+forward(30*12)
+left(90)
+forward(30*12)
+right(90)
+forward(30*12)
+left(90)
+forward(30*12)
+left(90)
+forward(30*12)
+penup()
+right(90)
+forward(30*12)
+pendown()
+left(90)
+forward(30*12*2)
+left(90)
+forward(30*12*4)
+left(90)
+forward(30*12*4)
+left(90)
+forward(30*12*4)
+left(90)
+forward(30*12*4)
+
+
