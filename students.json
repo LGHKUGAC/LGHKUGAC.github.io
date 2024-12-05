@@ -156,6 +156,22 @@
         "codeFile": "StudentsCode\\S3G-31 Tse Sui Kiu Hazel.py"
     },
     {
+        "name": "S3H-01 Cai Bezica",
+        "codeFile": "StudentsCode\\S3H-01 Cai Bezica.py"
+    },
+    {
+        "name": "S3H-02 Chan Chiu Yeung",
+        "codeFile": "StudentsCode\\S3H-02 Chan Chiu Yeung.py"
+    },
+    {
+        "name": "S3H-03 Chan Queston",
+        "codeFile": "StudentsCode\\S3H-03 Chan Queston.py"
+    },
+    {
+        "name": "S3H-04 Chen Hei Yu Helena",
+        "codeFile": "StudentsCode\\S3H-04 Chen Hei Yu Helena.py"
+    },
+    {
         "name": "S3H-06 Chiu Tin Long Sky",
         "codeFile": "StudentsCode\\S3H-06 Chiu Tin Long Sky.py"
     },
@@ -168,16 +184,64 @@
         "codeFile": "StudentsCode\\S3H-09 Goo Ryan.py"
     },
     {
+        "name": "S3H-11 Ko Tsz Him",
+        "codeFile": "StudentsCode\\S3H-11 Ko Tsz Him.py"
+    },
+    {
         "name": "S3H-13 Lam Ching Sum Agnes",
         "codeFile": "StudentsCode\\S3H-13 Lam Ching Sum Agnes.py"
+    },
+    {
+        "name": "S3H-14 Lam Hayden",
+        "codeFile": "StudentsCode\\S3H-14 Lam Hayden.py"
+    },
+    {
+        "name": "S3H-15 Lee Tsz Lam",
+        "codeFile": "StudentsCode\\S3H-15 Lee Tsz Lam.py"
+    },
+    {
+        "name": "S3H-16 Leung Kwan Nok",
+        "codeFile": "StudentsCode\\S3H-16 Leung Kwan Nok.py"
     },
     {
         "name": "S3H-17 Leung Yui",
         "codeFile": "StudentsCode\\S3H-17 Leung Yui.py"
     },
     {
+        "name": "S3H-19 Lui Hoi Kit",
+        "codeFile": "StudentsCode\\S3H-19 Lui Hoi Kit.py"
+    },
+    {
+        "name": "S3H-21 Sun Yan Yuet",
+        "codeFile": "StudentsCode\\S3H-21 Sun Yan Yuet.py"
+    },
+    {
         "name": "S3H-22 Tho Jonathan",
         "codeFile": "StudentsCode\\S3H-22 Tho Jonathan.py"
+    },
+    {
+        "name": "S3H-23 Tsang Pak Lam",
+        "codeFile": "StudentsCode\\S3H-23 Tsang Pak Lam.py"
+    },
+    {
+        "name": "S3H-24 Wong Tsz Ching",
+        "codeFile": "StudentsCode\\S3H-24 Wong Tsz Ching.py"
+    },
+    {
+        "name": "S3H-25 Wong Wing Ki",
+        "codeFile": "StudentsCode\\S3H-25 Wong Wing Ki.py"
+    },
+    {
+        "name": "S3H-28 Wu Sien Yan Bernice",
+        "codeFile": "StudentsCode\\S3H-28 Wu Sien Yan Bernice.py"
+    },
+    {
+        "name": "S3H-29 Yeung Jina Hoi-ching",
+        "codeFile": "StudentsCode\\S3H-29 Yeung Jina Hoi-ching.py"
+    },
+    {
+        "name": "S3H-30 Yip Hao Yu Ambrose",
+        "codeFile": "StudentsCode\\S3H-30 Yip Hao Yu Ambrose.py"
     },
     {
         "name": "S3H-32 Yu Yik Ho",

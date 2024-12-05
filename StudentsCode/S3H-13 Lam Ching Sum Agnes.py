@@ -1,9 +1,9 @@
+#paste your code here:
 from turtle import *
 
-speed(0)
 def draw_petal(colour):
   pencolor(colour)
-  for i in range(1):
+  for i in range(4):
     circle(petal)
 def draw_snowflake(colour):
   pencolor(colour)
@@ -15,9 +15,9 @@ def draw_square(colour):
   for i in range(4):
     forward(100)
     left(90)
-speed(20)
+speed(0)
 
-bgcolor('lightblue')
+bgcolor('black')
 pensize(3)
 pencolor('white')
 fillcolor('white')
@@ -44,3 +44,6 @@ for i in range(square):
   left(angle)
   draw_square('black')
     
+  
+
+

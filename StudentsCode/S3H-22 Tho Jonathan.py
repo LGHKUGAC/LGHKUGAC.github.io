@@ -1,7 +1,8 @@
+#paste your code here:
+
 from turtle import *
 def draw_arrow(x, y, value):
   penup()
-  pencolor(value, value + 25, value + 25)
   goto(x, y)
   pendown()
   forward(50)
@@ -15,10 +16,10 @@ def draw_arrow(x, y, value):
     right(20)
   left(20)
   forward(50)
-
+fillcolor('#355FF9')
 begin_fill()
-speed(5)
-bgcolor(100, 20, 30)
+speed(0)
+bgcolor(0, 0, 0)
 pencolor('white')
 pensize(7)
 draw_arrow(0, 30, 0)
@@ -31,7 +32,7 @@ end_fill()
 
 
 goto(0, -28.5)
-fillcolor('#FF6464')
+fillcolor('red')
 begin_fill()
 pendown()
 circle(30)

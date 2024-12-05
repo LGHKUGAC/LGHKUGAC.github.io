@@ -1,6 +1,6 @@
-from turtle import *
+#paste your code here:
 speed(10)
-bgcolor('lightgreen')
+bgcolor('black')
 pencolor('orange')
 pensize(7)
 penup()
@@ -75,3 +75,5 @@ def draw(rad):
 seth(-45)
 draw(130)
 end_fill()
+
+

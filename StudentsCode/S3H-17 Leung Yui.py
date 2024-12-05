@@ -1,8 +1,6 @@
-from turtle import *
+#paste your code here:
 
-#PROGRAMMER'S MESSAGE: ORIGINAL CODE AT PLAYGROUND 9
-#PROGRAMMER'S MESSAGE (TEACHERS IGNORE): REFERENCES AT PLAYGROUND 10
-speed(20)
+speed(-100)
     
 def draw_square(size, colour):
   pencolor(colour)
@@ -75,3 +73,4 @@ for y in range(12):
     left(140)
     
 hideturtle()
+
