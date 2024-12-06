@@ -360,8 +360,8 @@
     function calculateProgramsPerPage() {
     var width = window.innerWidth;
     var height = window.innerHeight;
-    var columns = Math.floor(width / 400); // 200px min canvas width + 20px gap
-    var rows = Math.floor(height / 400);;
+    var columns = 1 //Math.floor(width / 400); // 200px min canvas width + 20px gap
+    var rows = 1 //Math.floor(height / 400);;
     programsPerPage = columns * rows;
     console.log(columns);
     console.log(rows);
