@@ -1,7 +1,7 @@
-from turtle import *
-speed(50)
+#paste your code here:
 bgcolor('black')
-pencolor(pick_random_color_())
+pencolor('orange')
+speed(5)
 pensize(5)
 fillcolor('yellow')
 begin_fill()
@@ -32,3 +32,5 @@ forward(30)
 pendown()
 right(90)
 forward(90)
+
+

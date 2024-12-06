@@ -1,3 +1,4 @@
+#paste your code here:
 from turtle import *
 speed(0)
 
@@ -13,7 +14,7 @@ fillcolor('white')
 angle = 360 / 100
 begin_fill()
 for i in range (100):
-  draw_petal(pick_random_color_())
+  draw_petal('darkgray')
   left(angle)
 pencolor('white')
 left(90)
@@ -41,3 +42,4 @@ for i in range (15):
   draw_petal2('black')
   left(angle)
 end_fill()
+

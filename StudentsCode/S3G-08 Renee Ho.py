@@ -1,10 +1,9 @@
 from turtle import *
-
-speed(80)
 bgcolor('black')
 fillcolor('skyblue')
 pencolor('royalblue')
 pensize(10)
+speed(10)
 
 side = 6
 angle = 360/side

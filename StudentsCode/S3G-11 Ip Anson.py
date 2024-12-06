@@ -1,29 +1,39 @@
+#paste your code here:
 from turtle import *
-speed(0)
+
 bgcolor('black')
-for i in range(53):
+fillcolor('orange')
+pensize(7)
+
+
+
+speed(0)
+
+
+for i in range(13):
   begin_fill()
   color('skyblue')
   forward(75)
   left(25)
-  backward(45)
+  forward(75)
   left(25)
-  forward(43)
-  circle(50)
-  color('white')
+  forward(75)
+  left(25)
+  backward(78)
+  right(25)
+  backward(78)
+  right(25)
+  left(90)
   penup()
-  forward(35)
+  forward(50)
   pendown()
-  circle(30)
-  left(280)
-  forward(30)
-  right(90)
-  backward(25)
-  forward(60)
-  circle(5)
-  forward(5)
-  right(90)
-  backward(10)
-  color('orange')
+  backward(50)
+  right(25)
+  penup()
+  color('white')
+  forward(90)
+  left(75)
+  pendown()
+  circle(25)
   end_fill()
-  
+
