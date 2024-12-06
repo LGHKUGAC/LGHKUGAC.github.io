@@ -4,7 +4,7 @@ x = 10.5
 y = 10
 speed(15)
 bgcolor('black')
-pencolor('white')
+pencolor('black')
 fillcolor('white')
 begin_fill()
 for i in range(5):

@@ -1,0 +1,43 @@
+#paste your code here:from turtle import *
+speed(12)
+penup()
+bgcolor('black')
+pensize(3)
+pencolor('purple')
+penup()
+pendown()
+fillcolor('lavender')
+begin_fill()
+for i in range(8):
+  forward(50)
+  right(60)
+  forward(50)
+  right(60)
+  forward(50)
+  right(60)
+  left(45)
+end_fill()
+penup()
+forward(48)
+pendown()
+left(45)
+fillcolor('pink')#add a cute pink decoration
+begin_fill()
+forward(10)
+circle(10,235)
+left(30)
+
+forward(10)
+end_fill()
+penup()
+goto(6,-52)
+pendown()
+pencolor('lightblue')
+pensize(3)
+fillcolor('turquoise')#add turquoise element in the middle so it doesn't look boring
+begin_fill()
+for i in range(6):
+  circle(20)
+  right(60)
+end_fill()
+

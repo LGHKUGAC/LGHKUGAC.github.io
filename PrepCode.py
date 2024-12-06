@@ -1,5 +1,6 @@
 from turtle import Screen, Turtle
 import random
+import math
 
 
 

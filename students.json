@@ -96,8 +96,48 @@
         "codeFile": "StudentsCode\\S3A-30 Wong Yui Chi Kaden.py"
     },
     {
+        "name": "S3C-01 Chan Enoch",
+        "codeFile": "StudentsCode\\S3C-01 Chan Enoch.py"
+    },
+    {
+        "name": "S3C-02 Chan Hau Sheung",
+        "codeFile": "StudentsCode\\S3C-02 Chan Hau Sheung.py"
+    },
+    {
+        "name": "S3C-03 Cheng Tin Yu Magnus",
+        "codeFile": "StudentsCode\\S3C-03 Cheng Tin Yu Magnus.py"
+    },
+    {
+        "name": "S3C-04 Cheung Nga Man",
+        "codeFile": "StudentsCode\\S3C-04 Cheung Nga Man.py"
+    },
+    {
+        "name": "S3C-05 Chiu Hei Man",
+        "codeFile": "StudentsCode\\S3C-05 Chiu Hei Man.py"
+    },
+    {
+        "name": "S3C-06 Choy Hiu Wing Sophia",
+        "codeFile": "StudentsCode\\S3C-06 Choy Hiu Wing Sophia.py"
+    },
+    {
+        "name": "S3C-07 Chui Ching Kwan Alvin",
+        "codeFile": "StudentsCode\\S3C-07 Chui Ching Kwan Alvin.py"
+    },
+    {
+        "name": "S3C-08 Ko Shui Ying Sharise",
+        "codeFile": "StudentsCode\\S3C-08 Ko Shui Ying Sharise.py"
+    },
+    {
         "name": "S3C-09 Kwan Lok Lam",
         "codeFile": "StudentsCode\\S3C-09 Kwan Lok Lam.py"
+    },
+    {
+        "name": "S3C-10 Kwok Hiu Ching",
+        "codeFile": "StudentsCode\\S3C-10 Kwok Hiu Ching.py"
+    },
+    {
+        "name": "S3C-11 Lam Sum Ying Natalie",
+        "codeFile": "StudentsCode\\S3C-11 Lam Sum Ying Natalie.py"
     },
     {
         "name": "S3C-12 Lau Hoi Kiu",
@@ -108,6 +148,10 @@
         "codeFile": "StudentsCode\\S3C-13 Lee Jeannie On Kiu.py"
     },
     {
+        "name": "S3C-14 Leung Yat Hei Nathan",
+        "codeFile": "StudentsCode\\S3C-14 Leung Yat Hei Nathan.py"
+    },
+    {
         "name": "S3C-15 Chloe Leung",
         "codeFile": "StudentsCode\\S3C-15 Chloe Leung.py"
     },
@@ -116,12 +160,72 @@
         "codeFile": "StudentsCode\\S3C-16 Li Chun Hin.py"
     },
     {
-        "name": "S3C-27 Sit Tak Chi",
-        "codeFile": "StudentsCode\\S3C-27 Sit Tak Chi.py"
+        "name": "S3C-17 Li Ho Man Katrina",
+        "codeFile": "StudentsCode\\S3C-17 Li Ho Man Katrina.py"
+    },
+    {
+        "name": "S3C-18 Ling Hau Yau Zita",
+        "codeFile": "StudentsCode\\S3C-18 Ling Hau Yau Zita.py"
+    },
+    {
+        "name": "S3C-19 Liu Hoi Yan",
+        "codeFile": "StudentsCode\\S3C-19 Liu Hoi Yan.py"
+    },
+    {
+        "name": "S3C-20 Lo Chun Yin",
+        "codeFile": "StudentsCode\\S3C-20 Lo Chun Yin.py"
+    },
+    {
+        "name": "S3C-21 Ma Sze Yu",
+        "codeFile": "StudentsCode\\S3C-21 Ma Sze Yu.py"
+    },
+    {
+        "name": "S3C-22 Ng Sum Yau Isa",
+        "codeFile": "StudentsCode\\S3C-22 Ng Sum Yau Isa.py"
+    },
+    {
+        "name": "S3C-23 Ng Wei Luo Jason",
+        "codeFile": "StudentsCode\\S3C-23 Ng Wei Luo Jason.py"
+    },
+    {
+        "name": "S3C-24 Caylie",
+        "codeFile": "StudentsCode\\S3C-24 Caylie.py"
+    },
+    {
+        "name": "S3C-25 Pun Kin Pong",
+        "codeFile": "StudentsCode\\S3C-25 Pun Kin Pong.py"
+    },
+    {
+        "name": "S3C-26 Sin Ching Kiu",
+        "codeFile": "StudentsCode\\S3C-26 Sin Ching Kiu.py"
+    },
+    {
+        "name": "S3C-28 Tang Sui Ping",
+        "codeFile": "StudentsCode\\S3C-28 Tang Sui Ping.py"
+    },
+    {
+        "name": "S3C-29 Tsui Chung Yi",
+        "codeFile": "StudentsCode\\S3C-29 Tsui Chung Yi.py"
+    },
+    {
+        "name": "S3C-30 Wong Ho",
+        "codeFile": "StudentsCode\\S3C-30 Wong Ho.py"
+    },
+    {
+        "name": "S3C-31 Xu Fay",
+        "codeFile": "StudentsCode\\S3C-31 Xu Fay.py"
+    },
+    {
+        "name": "S3C-32 Yam Chi Heng Ethan",
+        "codeFile": "StudentsCode\\S3C-32 Yam Chi Heng Ethan.py"
     },
     {
         "name": "S3C-33 Yeung Yan Yu Erica",
         "codeFile": "StudentsCode\\S3C-33 Yeung Yan Yu Erica.py"
+    },
+    {
+        "name": "S3C-34 Yu Wing Tong",
+        "codeFile": "StudentsCode\\S3C-34 Yu Wing Tong.py"
     },
     {
         "name": "S3G-01 Au Pak Lun Aaron",
