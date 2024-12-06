@@ -1,7 +1,8 @@
+#paste your code here:
 from turtle import *
 r = 15
 pensize(4)
-speed(0)
+speed(5)
 bgcolor('sandybrown')
 for i in range(5):
   fillcolor('lightcoral')
@@ -31,3 +32,5 @@ for i in range(4):
   left(20)
   r =r-10
   end_fill()
+
+

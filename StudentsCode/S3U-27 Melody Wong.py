@@ -1,5 +1,9 @@
+#paste your code here:
+
 from turtle import *
-speed(80)
+
+bgcolor('black')
+
 pencolor('skyblue')
 pensize(5)
 left(45)
@@ -63,3 +67,5 @@ for i in range (3):
   r = r + 20
   
 left(90)
+
+

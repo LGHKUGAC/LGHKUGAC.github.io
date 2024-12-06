@@ -1,17 +1,17 @@
 from turtle import *
-
-radius = 15
+bgcolor('black')
+radius = 50
 def draw_circle(colour):
   pencolor(colour)
   for i in range(15):
     circle(radius)
     left(90)
-    fillcolor('white')
+    fillcolor('lightblue')
 
-radius = 15
+radius = 50
 speed(0)
 pensize(5)
-bgcolor('lightblue')
+bgcolor('black')
 
 begin_fill()
 draw_circle('pink')
